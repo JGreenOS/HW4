@@ -1,8 +1,8 @@
 # HW4
-Code Quiz for bootcamp
+Code Quiz for bootcampg
 
 ##Task List:
-*Build HTML on codequiz
+*Build HTML on codequiz <br>
 *Build CSS on codequiz
 *Build HTML on leaderboard
 *Leaderboard and codequiz use the same css file
