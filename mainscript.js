@@ -23,15 +23,19 @@ var questions = [
         stem: "Question 5",
         choices: [A, B, C, D]
         correct: B (text)
-
+    }
 
 //Timer - 20 seconds 
-var currentTime = document.querySelector( #something here );
-var timer = document.querySelector (# timer placement);
-var questions = document.querySelector (#  something);
+
+var timeEl = document.querySelector(".timer");
+//var currentTime = 33; //document.querySelector(#remainingTime);
+var timer = document.querySelector(#startTimer);
+var questions = document.querySelector (#something);
 var remainingTime = 100;
 var wrongPenalty = 10;
 var correctAnswerHold = 0;
+
+//imeEl.textContent = secondsLeft
 
 if (wrongPenalty === 0) function () {
     wrongPenalty = setInterval(function () {
@@ -89,7 +93,7 @@ else
 
     //send to screen div "Nope - The correct answer is" questions[ question array].correct; "You have a 10 second penalty";
 
-    
+
 
 
 
