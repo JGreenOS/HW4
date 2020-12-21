@@ -2,43 +2,51 @@
 var questionNum = 0;
 var numCorrect = 0;
 
-// var questions = [
-//     (
-//         stem: "Question 1",
-//         choices: [A, B, C, D]
-//         correct: B (text)
-        
-//         stem: "Question 2",
-//     choices: [A, B, C, D]
-//         correct: B(text)
+var questions = [
+    {
+        stem: "What type of variable cannot be reassigned?",
+        choices: ["var", "let", "const", "none"],
+        correct: "const"
+    },
 
-//         stem: "Question 3",
-//     choices: [A, B, C, D]
-//         correct: B(text)
+    {
+        stem: "Timers in Javascript are typically measured in which unit of time?",
+        choices: ["minutes", "seconds", "flops", "milliseconds"],
+        correct: "milliseconds"
+    },
 
-//         stem: "Question 4",
-//     choices: [A, B, C, D]
-//         correct: B(text)
+    {
+        stem: "What common structure does the DOM resemble?",
+        choices: ["house", "shed", "shrub", "tree"],
+        correct: "tree"
+    },
 
-//         stem: "Question 5",
-//     choices: [A, B, C, D]
-//         correct: B(text)
-//     }
+    {
+        stem: "What company developed Javascript?",
+        choices: ["Apple", "Microsoft", "IBM", "Netscape"],
+        correct: "Netscape"
+    },
 
-//Timer - 20 seconds 
+    {
+        stem: "Which of these are not a Javascript Event Handler?",
+        choices: ["onclick", "onmouseover", "onsubmit", "continue"],
+        correct: "continue"
 
+
+    },
+//Timer 
 var startTime = 75;
 
 var x = setInterval(function () {
     startTime--;
 
-document.getElementById("counter").innerHTML = startTime;
+    document.getElementById("counter").innerHTML = startTime;
 
-if (startTime < 0) {
-    clearInterval(x);
-    document.getElementById("counter").innerHTML = "EXPIRED"
-}
-},1000);
+    if (startTime < 0) {
+        clearInterval(x);
+        document.getElementById("counter").innerHTML = "EXPIRED"
+    }
+}, 1000);
 
 //var timeEl = document.querySelector(".timer");
 //var currentTime = 33; //document.querySelector(#remainingTime);
@@ -71,6 +79,24 @@ var correctAnswerHold = 0;
 
 
 //Render questions and choices to codequiz page
+function render(questionIndex) {
+    //clears previous data
+    questionsArea.innerHTML = "";
+    ulCreate.innerHTML = " ";
+    //loops through all questions
+    for (var i =0; i < questions.length; i++) {
+        var testQuestion = questions[questions.index].stem;
+        var testChoice = questions[questions.index].choices;
+        questionsArea.textContent = testQuestion;}
+
+       testChoice.forEach (function (newItem) {
+           var listItem = document.createElement ("li");
+           listItem.textContent = newItem;
+           testChoice.appendChild(ulCreate);
+           ulCreate.appendChild(listItem);
+           listItem.addEventListener("click", (correctAnswerCheck));
+       }
+,}
 
 //function send(questionNum) {
     //clear screen, keep timer
@@ -93,7 +119,7 @@ var correctAnswerHold = 0;
 
 
             //Correct Answer and Wrong Answer check
-            //function correctAnswerCheck(event) {
+         //   function correctAnswerCheck(event) {
                // if Element.matches("li");
 
                 //if (Element.textContext == questions[question array somewhere ].correct);
