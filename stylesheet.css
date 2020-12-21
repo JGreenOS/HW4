@@ -1,7 +1,14 @@
 /* timer styling */
 
 #timer {
-    color: orange
+    color: orange;
+    background-color: green;
+    font-size: 40px;
+
+}
+
+p {
+    color: orange;
     background-color: green;
     font-size: 40px;
 }
