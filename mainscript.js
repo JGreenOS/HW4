@@ -34,7 +34,9 @@ var questions = [
 
 
     },
+,
 //Timer 
+
 var startTime = 75;
 
 var x = setInterval(function () {
@@ -48,14 +50,14 @@ var x = setInterval(function () {
     }
 }, 1000);
 
+render(questionNum);
+
 //var timeEl = document.querySelector(".timer");
 //var currentTime = 33; //document.querySelector(#remainingTime);
 //var timer = document.querySelector(#startTimer);
 //var remainingTime = 100;
-var wrongPenalty = 10;
-var correctAnswerHold = 0;
-
-//imeEl.textContent = secondsLeft
+//var wrongPenalty = 10;
+//var correctAnswerHold = 0;
 
 //if (wrongPenalty === 0) function timer() {
    // wrongPenalty = setInterval(function () {
@@ -79,14 +81,16 @@ var correctAnswerHold = 0;
 
 
 //Render questions and choices to codequiz page
-function render(questionIndex) {
+var ulCreate = document.createElement("ul");
+
+function render (questionNum) {
     //clears previous data
     questionsArea.innerHTML = "";
     ulCreate.innerHTML = " ";
     //loops through all questions
     for (var i =0; i < questions.length; i++) {
-        var testQuestion = questions[questions.index].stem;
-        var testChoice = questions[questions.index].choices;
+        var testQuestion = questions[questions.indexOf].stem;
+        var testChoice = questions[questions.indexOf].choices;
         questionsArea.textContent = testQuestion;}
 
        testChoice.forEach (function (newItem) {
@@ -96,7 +100,7 @@ function render(questionIndex) {
            ulCreate.appendChild(listItem);
            listItem.addEventListener("click", (correctAnswerCheck));
        }
-,}
+    }  
 
 //function send(questionNum) {
     //clear screen, keep timer
