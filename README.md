@@ -15,7 +15,7 @@ Code Quiz for bootcamp
 - [ ] Write questions to window
 - [ ] Check for correct/incorrect answers
 - [ ] Wrong answer
-- [ ] Build timer
+- [x] Build timer
 - [ ] Timer needs stop/start and penalty when incorrect
 - [ ] Quiz complete
 - [ ] Write to local storage
