@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,30 +9,59 @@
 
 
 </head>
+
 <body>
-
-<p id="counter">Time remaining</p>
-
-
-
-<a href="leaderboard.html" >View Leaderboard</a>
-
-<h1>Take the coding quiz! Wrong answers will give you a 10 second penalty on the clock!</h1>
-
-<div id = "questionsArea"> Questions here </div>
-
-<div id="startTimer"><button>Start the quiz</button></div>
-
-       
+<container>
+    <div class="container">
+        <div id="home" class="flex-column flex-center">
+            <h1>Take the coding quiz! Wrong answers will give you a 10 second penalty on the clock!</h1>
+            <a href="leaderboard.html">View Leaderboard</a>
+        </div>
+        <div id="currentTime"></div>
+        <div id="questionsDiv">?</div>
+        <ul id="choicesUL"></ul>
 
 
-    
+        <button id ="startTimer">Start Quiz</button>
 
- 
-    
+    </div>
 
 
 
-<script src="mainscript.js"></script>  
+
+
+    <p id="counter">Time remaining</p>
+
+
+
+
+
+
+    <div id="questionsArea"> Questions here </div>
+
+    <div id="question">
+        <ul id="userChoices"></ul>
+    </div>
+
+    <div id="startTimer1"><button>Start the quiz</button></div>
+
+    console.log(totalQuestions);
+
+    </container>
+
+    <script>
+
+
+    </script>
+
+
+
+
+
+
+
+
+    <script src="mainscript.js"></script>
 </body>
+
 </html>

@@ -1,6 +1,6 @@
 /* timer styling */
 
-#timer {
+#counter {
     color: orange;
     background-color: green;
     font-size: 40px;
@@ -12,3 +12,52 @@ p {
     background-color: green;
     font-size: 40px;
 }
+
+.question{
+    font-size: 30px;
+    font-family:'Courier New', Courier, monospace;
+    color: black;
+    background-color: yellow;
+    height: 60px;
+}
+
+/*font awesome*/
+
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    font-size: 30px;
+    font-family:'Courier New', Courier, monospace;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.hidden {
+    display: none;
+}
+
+.btn {
+    font-size: large;
+}
+
+.choice-container {
+    display: flex;
+    margin: 0px;
+    width:100%;
+    background-color: yellow;
+    font-size: 10px;
+    border-radius: 5px;
+
+    

@@ -1,40 +1,37 @@
 //Questions
-var questionNum = 0;
-var numCorrect = 0;
 
 var questions = [
     {
-        stem: "What type of variable cannot be reassigned?",
-        choices: ["var", "let", "const", "none"],
-        correct: "const"
+        "stem": "What type of variable cannot be reassigned?",
+        "choice": ["var", "let", "const", "none"],
+        "correct": "const"
     },
 
     {
-        stem: "Timers in Javascript are typically measured in which unit of time?",
-        choices: ["minutes", "seconds", "flops", "milliseconds"],
-        correct: "milliseconds"
+        "stem": "Timers in Javascript are typically measured in which unit of time?",
+        "choices": ["minutes", "seconds", "flops", "milliseconds"],
+        "correct": "milliseconds"
     },
 
     {
-        stem: "What common structure does the DOM resemble?",
-        choices: ["house", "shed", "shrub", "tree"],
-        correct: "tree"
+        "stem": "What common structure does the DOM resemble?",
+        "choices": ["house", "shed", "shrub", "tree"],
+        "correct": "tree"
     },
 
     {
-        stem: "What company developed Javascript?",
-        choices: ["Apple", "Microsoft", "IBM", "Netscape"],
-        correct: "Netscape"
+        "stem": "What company developed Javascript?",
+        "choices": ["Apple", "Microsoft", "IBM", "Netscape"],
+        "correct": "Netscape"
     },
 
     {
-        stem: "Which of these are not a Javascript Event Handler?",
-        choices: ["onclick", "onmouseover", "onsubmit", "continue"],
-        correct: "continue"
+        "stem": "Which of these are not a Javascript Event Handler?",
+        "choices": ["onclick", "onmouseover", "onsubmit", "continue"],
+        "correct": "continue"
+    }
+]
 
-
-    },
-,
 //Timer 
 
 var startTime = 75;
@@ -50,26 +47,29 @@ var x = setInterval(function () {
     }
 }, 1000);
 
-render(questionNum);
+var score = 0;
+var questionIndex = 0;
+var currentTime = document.querySelector("#currentTime");
+var questionsDiv = document.querySelector("#questionsDiv");
+var timer = document.querySelector("#startTimer");
+var secondsLeft = 75;
+var holdInterval = 0;
+var penalty = 10;
+var ulCreate = document.createElement("ul");
 
-//var timeEl = document.querySelector(".timer");
-//var currentTime = 33; //document.querySelector(#remainingTime);
-//var timer = document.querySelector(#startTimer);
-//var remainingTime = 100;
-//var wrongPenalty = 10;
-//var correctAnswerHold = 0;
+
 
 //if (wrongPenalty === 0) function timer() {
-   // wrongPenalty = setInterval(function () {
-       // secondsLeft--;
-       // remainingTime.textContext = "Time Remaining" + secondsLeft;
+// wrongPenalty = setInterval(function () {
+// secondsLeft--;
+// remainingTime.textContext = "Time Remaining" + secondsLeft;
 
-        //if (secondsLeft = 0) {
-           // clearInterval(remainingTime);
+//if (secondsLeft = 0) {
+// clearInterval(remainingTime);
 
-           // currentTime.textContext = "Time is Up";
-       // }
-  //  }
+// currentTime.textContext = "Time is Up";
+// }
+//  }
 
 
 //Stop-start timer
@@ -81,26 +81,107 @@ render(questionNum);
 
 
 //Render questions and choices to codequiz page
-var ulCreate = document.createElement("ul");
+function render(questionIndex) {
+    questionsDiv.innerHTML = "";
+    ulCreate.innerHTML = "";
 
-function render (questionNum) {
-    //clears previous data
-    questionsArea.innerHTML = "";
-    ulCreate.innerHTML = " ";
-    //loops through all questions
-    for (var i =0; i < questions.length; i++) {
-        var testQuestion = questions[questions.indexOf].stem;
-        var testChoice = questions[questions.indexOf].choices;
-        questionsArea.textContent = testQuestion;}
+    for (var i = 0; i < questions.length; i++)
+        var userQuestion = questions[questionIndex].stem;
+    var userChoices = questions[questionIndex].choices;
+    questionsDiv.textContent = userQuestion;
+}
 
-       testChoice.forEach (function (newItem) {
-           var listItem = document.createElement ("li");
-           listItem.textContent = newItem;
-           testChoice.appendChild(ulCreate);
-           ulCreate.appendChild(listItem);
-           listItem.addEventListener("click", (correctAnswerCheck));
-       }
-    }  
+userChoices.forEach(function (newItem) {
+    var listItem = document.createElement("li")
+    listItem.textContent = newItem;
+    questionsDiv.appendChild(ulCreate);
+    ulCreate.appendChild(listItem);
+    listItem.addEventListener("click", (compare));
+})
+
+function compare(event) {
+    var element = event.target;
+    if (element.matches("li")) {
+        var createDiv = documentCreateElement("div")
+        createDiv.setAttribute("id", "createDiv");
+    }
+
+    if (element.textContent === questions[questionIndex].answer) {
+        score++
+        createDiv.textContent = "Correct! The answer is " + questions[questionIndex].answer;
+    }
+    else {
+        secondsLeft = secondsLeft - penalty;
+        createDiv.textContent = "Incorrect. The correct answer is" + questions[questions.Index].answer;
+    }
+}
+questionIndex++;
+
+if (questionIndex >= questions.length) {
+    allDone();
+    createDiv.textContent = "The End  . Your score is " + score;
+
+}
+else {
+    render(questionIndex);
+
+}
+questionsDiv.appendChild(createDiv);
+
+function allDone() {
+    questionsDiv.innerHTML = "";
+    currentTime.innerHTML = "";
+
+    var createH1 = document.createElement("h1");
+    createH1.setAttribute("id", "createH1");
+    createH1.textContent = "Complete!"
+    questionsDiv.appendChild(createH1);
+
+    var createnewP = document.createElement("p");
+    createnewP = setAttribute("id", "createnewP");
+    questionsDiv.appendChild(createNewP);
+
+
+}
+if (secondsLeft >= 0) {
+    var timeremaining = secondsLeft;
+    var createPend = document.createElement("p")
+    clearInterval(holdInterval);
+    createnewP.textContent = "Your final score is: " + timeremaining;
+    questionsDiv.appendChild(createPend);
+}
+
+  
+
+// function render(questionsIndex)
+// {
+//     questionDiv.innerHTML = "my infor here";
+//     ulCreate.innerHTML = "";
+
+// for (var i =0 ; i < totalQuestions; i++);
+// var userQuestion = questions[questionsIndex].stem;
+// var userChoices = questions[questionsIndex].choices;
+// questionDiv.textContext = userQuestion;
+
+// userChoices.forEach(function (newItem) {
+// var listItem = document.createElement("li");
+//     listItem.textContext = newItem;
+//     questiondiv.appendChild(ulCreate);
+//     ulCreate.appendChild(listItem);
+//     listItem.addEventListener("click", compare));
+// }
+
+    //loadQuestion(currentQuestion);
+
+    //    testChoice.forEach (function (newItem) {
+    //        var listItem = document.createElement ("li");
+    //        listItem.textContent = newItem;
+    //        testChoice.appendChild(ulCreate);
+    //        ulCreate.appendChild(listItem);
+    //        listItem.addEventListener("click", (correctAnswerCheck));
+    //    }
+    // } , 
+
 
 //function send(questionNum) {
     //clear screen, keep timer
