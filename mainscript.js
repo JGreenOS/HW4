@@ -58,6 +58,68 @@ var myQuestions = [
 
   ];
   
+//Variables
+var score = 0;
+var questionIndex = 0;
+
+var secondsRemaining = 75;
+var penalty = 10;
+
+//puts a question and answer to the page
+
+function render(questionIndex) {
+questions.Div.innerHTML = "";
+ulCreate.innerHTML = "";
+
+for (var i=0; i < questions.length; i++) {
+  var userQuestion = questions[questionIndex].stem;
+  var userChoices = questions[questionIndex].choices;
+
+  questionsDiv.textContent = userQuestion;
+}
+
+userChoices.forEach(function (newItem) {
+var listItem = document.createElement("li");
+listItem.textContent = newItem;
+questionsDiv.appendChild(ulCreate);
+ulCreate.appendChild(listItem);
+listItem.addEventListener("click", (compare));
+})
+
+}
+
+//check correct answer
+
+function compare(event) {
+  var element = event.target;
+
+  if (element.matches ("li")) {
+
+    var createDiv = document.createElement("div")
+    createDiv.setAttribute("id", "createDiv");
+
+    if (element.textContent === questions[questionIndex].correct) {
+      score++;
+      createDiv.textContent = "Yes, the answer is" + questions[questionIndex].correct;
+    }
+    else {
+      addPenalty = secondsRemaining - penalty; 
+      createDiv.textContent = "No, the answer is" + questions[questionIndex].correct;
+
+questionIndex++;
+
+if (questionIndex >= questions.length) {
+  quizComplete (); 
+
+  createDiv.textContent = "Quiz Completed"
+//add score here
+
+  }
+}
+
+
+
+
   //aligning to html
   var quizContainer = document.getElementById('quiz');
   var resultsContainer = document.getElementById('results');
@@ -164,4 +226,4 @@ var myQuestions = [
      document.getElementById("time").innerHTML = "EXPIRED"
    }
  }, 1000 );
-
+  }}
