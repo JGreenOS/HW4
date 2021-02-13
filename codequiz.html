@@ -2,66 +2,39 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Take the Code Quiz!</title>
-    <link rel="stylesheet.css" type="text/css" href="stylesheet.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+  <link rel="stylesheet" type="text/css">
 
+  <title>Code Quiz</title>
 </head>
 
+
 <body>
-<container>
-    <div class="container">
-        <div id="home" class="flex-column flex-center">
-            <h1>Take the coding quiz! Wrong answers will give you a 10 second penalty on the clock!</h1>
-            <a href="leaderboard.html">View Leaderboard</a>
-        </div>
-        <div id="currentTime"></div>
-        <div id="questionsDiv">?</div>
-        <ul id="choicesUL"></ul>
 
 
-        <button id ="startTimer">Start Quiz</button>
+  <a href="leaderboard.html">View the Leader Board</a> <br>
 
-    </div>
+  <p>Time Remaining <span id="time"></span></p>
 
+  <div id="questions">
 
-
-
-
-    <p id="counter">Time remaining</p>
-
+    <h1> Coding Quiz Challenge</h1>
+    <p>Can you answer these 5 questions in less than 75 seconds? Incorrect answers will penalize your score!</p>
 
 
+  </div>
+  <p> Select the radio button from the list below:</p>
+  <div id="quiz"></div>
 
+  <button id="submit">Check answer</button>
 
+  <div id="results"></div>
 
-    <div id="questionsArea"> Questions here </div>
+  <link rel="stylesheet" href="stylesheet.css">
 
-    <div id="question">
-        <ul id="userChoices"></ul>
-    </div>
+  <script src="mainscript.js"></script>
 
-    <div id="startTimer1"><button>Start the quiz</button></div>
-
-    console.log(totalQuestions);
-
-    </container>
-
-    <script>
-
-
-    </script>
-
-
-
-
-
-
-
-
-    <script src="mainscript.js"></script>
 </body>
-
-</html>

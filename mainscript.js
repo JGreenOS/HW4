@@ -1,226 +1,167 @@
-//Questions
 
-var questions = [
+//holding my questions in an arrayt with the correct answer
+var myQuestions = [
     {
-        "stem": "What type of variable cannot be reassigned?",
-        "choice": ["var", "let", "const", "none"],
-        "correct": "const"
+        question: "What type of variable cannot be reassigned?",
+        answers: {
+            a: "var",
+            b: "let",
+            c: "const",
+            d: "none"
+        },
+        correctAnswer: 'b'
     },
 
     {
-        "stem": "Timers in Javascript are typically measured in which unit of time?",
-        "choices": ["minutes", "seconds", "flops", "milliseconds"],
-        "correct": "milliseconds"
+        question: "Timers in Javascript are typically measured in which unit of time?",
+        answers: {
+            a: "minutes",
+            b: "seconds",
+            c: "flops",
+            d: "milliseconds"
+        },
+        correctAnswer: 'd'
+    },
+    {
+        question: "What common structure does the DOM resemble?",
+        answers: {
+            a: "house",
+            b: "shed",
+            c: "shrub",
+            d: "tree"
+        },
+        correctAnswer: 'd'
     },
 
     {
-        "stem": "What common structure does the DOM resemble?",
-        "choices": ["house", "shed", "shrub", "tree"],
-        "correct": "tree"
+        question: "What company developed Javascript?",
+        answers: {
+            a: "Apple",
+            b: "Microsoft",
+            c: "IBM",
+            d: "Netscape"
+        },
+        correctAnswer: 'd'
     },
 
     {
-        "stem": "What company developed Javascript?",
-        "choices": ["Apple", "Microsoft", "IBM", "Netscape"],
-        "correct": "Netscape"
+        question: "Which of these are not a Javascript Event Handler?",
+        answers: {
+            a: "onclick",
+            b: "onmouseover",
+            c: "onsubmit",
+            d: "continue"
+        },
+         correctAnswer: 'd'
     },
 
-    {
-        "stem": "Which of these are not a Javascript Event Handler?",
-        "choices": ["onclick", "onmouseover", "onsubmit", "continue"],
-        "correct": "continue"
-    }
-]
 
-//Timer 
-
-var startTime = 75;
-
-var x = setInterval(function () {
-    startTime--;
-
-    document.getElementById("counter").innerHTML = startTime;
-
-    if (startTime < 0) {
-        clearInterval(x);
-        document.getElementById("counter").innerHTML = "EXPIRED"
-    }
-}, 1000);
-
-var score = 0;
-var questionIndex = 0;
-var currentTime = document.querySelector("#currentTime");
-var questionsDiv = document.querySelector("#questionsDiv");
-var timer = document.querySelector("#startTimer");
-var secondsLeft = 75;
-var holdInterval = 0;
-var penalty = 10;
-var ulCreate = document.createElement("ul");
-
-
-
-//if (wrongPenalty === 0) function timer() {
-// wrongPenalty = setInterval(function () {
-// secondsLeft--;
-// remainingTime.textContext = "Time Remaining" + secondsLeft;
-
-//if (secondsLeft = 0) {
-// clearInterval(remainingTime);
-
-// currentTime.textContext = "Time is Up";
-// }
-//  }
-
-
-//Stop-start timer
-
-
-
-
-//Time remaining
-
-
-//Render questions and choices to codequiz page
-function render(questionIndex) {
-    questionsDiv.innerHTML = "";
-    ulCreate.innerHTML = "";
-
-    for (var i = 0; i < questions.length; i++)
-        var userQuestion = questions[questionIndex].stem;
-    var userChoices = questions[questionIndex].choices;
-    questionsDiv.textContent = userQuestion;
-}
-
-userChoices.forEach(function (newItem) {
-    var listItem = document.createElement("li")
-    listItem.textContent = newItem;
-    questionsDiv.appendChild(ulCreate);
-    ulCreate.appendChild(listItem);
-    listItem.addEventListener("click", (compare));
-})
-
-function compare(event) {
-    var element = event.target;
-    if (element.matches("li")) {
-        var createDiv = documentCreateElement("div")
-        createDiv.setAttribute("id", "createDiv");
-    }
-
-    if (element.textContent === questions[questionIndex].answer) {
-        score++
-        createDiv.textContent = "Correct! The answer is " + questions[questionIndex].answer;
-    }
-    else {
-        secondsLeft = secondsLeft - penalty;
-        createDiv.textContent = "Incorrect. The correct answer is" + questions[questions.Index].answer;
-    }
-}
-questionIndex++;
-
-if (questionIndex >= questions.length) {
-    allDone();
-    createDiv.textContent = "The End  . Your score is " + score;
-
-}
-else {
-    render(questionIndex);
-
-}
-questionsDiv.appendChild(createDiv);
-
-function allDone() {
-    questionsDiv.innerHTML = "";
-    currentTime.innerHTML = "";
-
-    var createH1 = document.createElement("h1");
-    createH1.setAttribute("id", "createH1");
-    createH1.textContent = "Complete!"
-    questionsDiv.appendChild(createH1);
-
-    var createnewP = document.createElement("p");
-    createnewP = setAttribute("id", "createnewP");
-    questionsDiv.appendChild(createNewP);
-
-
-}
-if (secondsLeft >= 0) {
-    var timeremaining = secondsLeft;
-    var createPend = document.createElement("p")
-    clearInterval(holdInterval);
-    createnewP.textContent = "Your final score is: " + timeremaining;
-    questionsDiv.appendChild(createPend);
-}
-
+  ];
   
+  //aligning to html
+  var quizContainer = document.getElementById('quiz');
+  var resultsContainer = document.getElementById('results');
+  var submitButton = document.getElementById('submit');
+  var counter = 0;
+  
+  generateQuiz(myQuestions, quizContainer, resultsContainer, submitButton);
+  
+  function generateQuiz(questions, quizContainer, resultsContainer, submitButton){
+  
+    function showQuestions(questions, quizContainer){
+      // we'll need a place to store the output and the answer choices
+      var output = [];
+      var answers;
+  
+      // for each question...
+   
+        
+        // first reset the list of answers
+        answers = [];
+  
+        // for each available answer...
+        for(letter in questions[counter].answers){
+  
+          // ...add an html radio button
+          answers.push(
+            '<label>'
+              + '<input type="radio" name="question'+0+'" value="'+letter+'">'
+              + letter + ': '
+              + questions[counter].answers[letter]
+            + '</label>'
+          );
+        }
+  
+        // add this question and its answers to the output
+        output.push(
+          '<div class="question">' + questions[counter].question + '</div>'
+          + '<div class="answers">' + answers.join('') + '</div>'
+        );
+      
+  
+      // finally combine our output list into one string of html and put it on the page
+      quizContainer.innerHTML = output.join('');
+    }
+  
+  
+    function showResults(questions, quizContainer, resultsContainer){
+      
+      // gather answer containers from our quiz
+      var answerContainers = quizContainer.querySelectorAll('.answers');
+      
+      // keep track of user's answers
+      var userAnswer = '';
+      var numCorrect = 0;
+      
+      // for each question...
+      
+  
+        // find selected answer
+        //userAnswer = (answerContainers[counter].querySelector([name=question'+counter+']:checked')||{}).value;)
+        
+        // if answer is correct
+        if(userAnswer===questions[counter].correctAnswer){
+          // add to the number of correct answers
+          numCorrect++;
+          
+          // color the answers green
+          answerContainers[i].style.color = 'lightgreen';
+        }
+        // if answer is wrong or blank
+        else{
+          // color the answers red
+          answerContainers[counter].style.color = 'red';
+        }
+      
+  
+      // show number of correct answers out of total
+      resultsContainer.innerHTML = numCorrect + ' out of ' + questions.length;
+    }
+  
+    // show questions right away
+    showQuestions(questions, quizContainer);
 
-// function render(questionsIndex)
-// {
-//     questionDiv.innerHTML = "my infor here";
-//     ulCreate.innerHTML = "";
+    
+    // on submit, show results
+    submitButton.onclick = function(){
+      counter++;
+      showResults(questions, quizContainer, resultsContainer);
+      generateQuiz(myQuestions, quizContainer, resultsContainer, submitButton);
+    }
+  
+  }
 
-// for (var i =0 ; i < totalQuestions; i++);
-// var userQuestion = questions[questionsIndex].stem;
-// var userChoices = questions[questionsIndex].choices;
-// questionDiv.textContext = userQuestion;
+  //counter
+ var startTime= 75;
 
-// userChoices.forEach(function (newItem) {
-// var listItem = document.createElement("li");
-//     listItem.textContext = newItem;
-//     questiondiv.appendChild(ulCreate);
-//     ulCreate.appendChild(listItem);
-//     listItem.addEventListener("click", compare));
-// }
+ var x = setInterval(function () {
+   startTime--;
+  
+   document.getElementById("time").innerText = startTime;
+ 
+   if (startTime < 0) {
+     clearInterval(x);
+     document.getElementById("time").innerHTML = "EXPIRED"
+   }
+ }, 1000 );
 
-    //loadQuestion(currentQuestion);
-
-    //    testChoice.forEach (function (newItem) {
-    //        var listItem = document.createElement ("li");
-    //        listItem.textContent = newItem;
-    //        testChoice.appendChild(ulCreate);
-    //        ulCreate.appendChild(listItem);
-    //        listItem.addEventListener("click", (correctAnswerCheck));
-    //    }
-    // } , 
-
-
-//function send(questionNum) {
-    //clear screen, keep timer
-
-    //for (var = i, i < 0, i++) {  //oops through questions
-        //question stem presented here//
-        //choices associated with question stem//
-        //var userQuestion = questions[array here].stem;
-        //var userChoices = questions[array here].choices;
-        //send to questions area on html = userQuestion;
-
-        //userChoices.forEach(function (newItem) {  //presents all choices from choices//
-            //var listItem = document.createElement("li");
-            //listItem.textContext = newItem;
-            //send this to choices area on html = 
-            //listItem.addEventListener("click", (correctAnswerCheck));
-
-
-
-
-
-            //Correct Answer and Wrong Answer check
-         //   function correctAnswerCheck(event) {
-               // if Element.matches("li");
-
-                //if (Element.textContext == questions[question array somewhere ].correct);
-        //score++;
-    //send to screen div "The correct answer is" + questions[ question array].correct; "Nice!"
-
-//else
-        //secondsLeft = secondsLeft - wrongPenalty;
-
-    //send to screen div "Nope - The correct answer is" questions[ question array].correct; "You have a 10 second penalty";
-
-
-
-
-
-//Incorrect Answer with penalty
-
-
-//Leaderboard
