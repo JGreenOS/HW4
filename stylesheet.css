@@ -1,6 +1,6 @@
 /* timer styling */
 
-#counter {
+#timer {
     box-sizing: border-box;
     color: orange;
     background-color: green;
@@ -24,10 +24,12 @@
 }
 
 .container {
-    width: 100%;
+    width: 800px;
+    max-width: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 0 0 10px 2px;
 }
 
 .flex-column {
@@ -42,6 +44,17 @@
 
 .btn {
     font-size: large;
+    background-color: palegoldenrod;
+    border: 1px, solid, black;
+    border-radius: 5px;
+    padding: 5px 10px;
+
+
+}
+
+.btn-grid{
+display: grid;
+
 }
 
 .choice-container {
@@ -64,10 +77,13 @@
     background-color: yellow;
     font-size: 30px;
 }
-ody{
+body{
     font-size: 20px;
     font-family: sans-serif;
     color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .question{
     font-weight: 600;
@@ -89,3 +105,10 @@ ody{
   #submit:hover{
     background-color: #3a8;
   }
+
+  .control {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+

@@ -11,33 +11,33 @@
   <title>Code Quiz</title>
 </head>
 
-
 <body>
-
-
-  <a href="leaderboard.html">View the Leader Board</a> <br>
-
-  <p>Time Remaining <span id="time"></span></p>
-
+  <div>
+    <row><a href="leaderboard.html">View the Leader Board</a> <br>
+    </row>
+    <p>Time Remaining <span id="time"></span></p>
+  </div>
   <div id="questions">
 
     <h1> Coding Quiz Challenge</h1>
     <p>Can you answer these 5 questions in less than 75 seconds? Incorrect answers will penalize your score!</p>
 
-
   </div>
+  
+    <button id="startTimer">Start the Quiz</button>
 
-  <button id="startTimer">Start the Quiz</button>
-  <p> Select the radio button from the list below:</p>
-  <div id="quiz"></div>
+    <div id="questionsDiv">
+      <h3 id = "questions-title"></h3>
+<div id= "choice"></div>
+    </div>
 
-  <button id="submit">Check answer</button>
 
-  <div id="results"></div>
+    <div id="results"></div>
 
-  <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="stylesheet.css">
 
-  <script src="mainscript.js"></script>
+    <script src="mainscript.js"></script>
 
 </body>
+
 </html>
