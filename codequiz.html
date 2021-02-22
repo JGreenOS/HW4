@@ -5,39 +5,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-  <link rel="stylesheet" type="text/css">
-
+  <link rel="stylesheet" type="text/css" href="./stylesheet.css">
+   <!-- Bootstrap CSS -->
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
   <title>Code Quiz</title>
 </head>
 
 <body>
-  <div>
-    <row><a href="leaderboard.html">View the Leader Board</a> <br>
-    </row>
-    <p>Time Remaining <span id="time"></span></p>
+<div>
+  <span id="timer">Time Remining:</span> </div>
+
+  <div class="wrapper">
+    <div id="start-screen" class ="start"></div>
+  <h1> Coding Quiz Challenge</h1><br>
+    <p>Can you answer these 5 questions in less than 75 seconds? Incorrect answers will penalize your score!</p> <br> 
+
+  <button id="start">Start Quiz - Good Luck! </button>
   </div>
-  <div id="questions">
 
-    <h1> Coding Quiz Challenge</h1>
-    <p>Can you answer these 5 questions in less than 75 seconds? Incorrect answers will penalize your score!</p>
+  <div id = "questions">
+<h3 id="stem"></h3>
+<div id="choice">
+</div>
+</div>
 
+
+
+  <div id="scores-div">
+    <input id="view-scores" type="button" value="View Scores">
   </div>
-  
-    <button id="startTimer">Start the Quiz</button>
-
-    <div id="questionsDiv">
-      <h3 id = "questions-title"></h3>
-<div id= "choice"></div>
-    </div>
 
 
-    <div id="results"></div>
 
-    <link rel="stylesheet" href="stylesheet.css">
-
-    <script src="mainscript.js"></script>
-
+  <script src="mainscript.js"></script>
 </body>
 
 </html>

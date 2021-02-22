@@ -1,46 +1,115 @@
-//variables
-//questions index
-//questions element for questions container
-//timer
-//choices definition
-//submit button definition
-//start button definition
-//enter player name
-//track high score on leaderboard
-//questions array here
-  //title
-  //choices in an array
-  //correct answer
+let currentQuestionindex = 0;
+let timerId;
+let questionsElement = document.getElementById("questions");
+let timerElement = document.getElementById("time");
+let choicesElement = document.getElementById("choices");
+let submitButton = document.getElementById("submit");
+let startButton = document.getElementById("start");
+let initialsElement = document.getElementById("initials");
+let feedbackElement = document.getElementById("feedback");
 
+let questions = [
+  {
+      stem: "What type of variable cannot be reassigned?",
+      choice: ["var", "let", "const", "none"],
+      correct: "const"
+  },
 
-//functions
+  {
+      stem: "Timers in Javascript are typically measured in which unit of time?",
+      choices: ["minutes", "seconds", "flops", "milliseconds"],
+      correct: "milliseconds"
+  },
 
-//time interval
+  {
+      stem: "What common structure does the DOM resemble?",
+      choices: ["house", "shed", "shrub", "tree"],
+      correct: "tree"
+  },
 
+  {
+      stem: "What company developed Javascript?",
+      choices: ["Apple", "Microsoft", "IBM", "Netscape"],
+      correct: "Netscape"
+  },
 
-//getQuestion
+  {
+      stem: "Which of these are not a Javascript Event Handler?",
+      choices: ["onclick", "onmouseover", "onsubmit", "continue"],
+      correct: "continue"
+  }
+]
 
-
-//checkAnswer
-
-
-//update leaderboard
-function updateLeaderboard () {
-var name = nameEL.value.trim();
-console.log(name);
-var bestScores = JSON.parse(window.localStorage.getItem("leaderBoard")) || []
-
-var playerScore = {
-score: time,
-name: name,
+var time = questions.length * 10;
+function timeInterval () {
+time --;
+timerElement.textContent = time; 
+if (time <= 0)
+  quizEnd();
 }
 
-bestScores.push(playerScore);
-window.localStorage.setItem("leaderBoard", JSON.stringify(leaderBoard));
-window.location.href - "./leaderboard.html";
-};
+function start () {
+  var startScreen = document.getElementById("start-screen");
+  startScreen.setAttribute("class", "hidden");
+  questionsElement.removeAttribute("class");
+  timerid = setInterval(timeInterval, 1000);
+  timerElement.textContent = time;
 
-//player submits name
-submitBtn.onclick = updateLeaderboard;
-startBtn.online = start;
+  getQuestion();
+}
 
+function getQuestion () {
+let currentQuestion = questions[currentQuestionIndex];
+let stem = document.getElementById("question-stem")
+stem.textContent = currentQuestion.stem;
+
+choicesElement.innerHTML = " ";
+
+currentQuestion.choice.forEach((choice, index) => {
+let answerOption = document.createElement("button");
+answerOption.setAttribute("class", "choice");
+answerOption.setAttribute("value", choice);
+answerOption.textContext = index + i + " " + choice;
+answerOption.onclick = questionClick;
+choicesElement.appendChild(answerOption);
+
+});
+}
+
+function questionClick () {
+ if (this.value !==questions[CurrentQuestionIndex].correct) {
+   time = time -10;
+   if (time < 0) {
+     time = 0;
+}
+timerElement.textContent = time;
+
+feedbackElement.textContent = "Incorrect";
+ }
+ else {
+   feedbackElement.textContent = "Correct";
+ }
+
+ feedbackElement.setAttribute("class", "feedback");
+ currentQuestionindex ++;
+
+ if(currentQuestionindex === questions.length) {
+   quizEnd();
+ }else {
+   getQuestion();
+ }
+}
+function quizEnd () {
+  clearInterval(timerId);
+
+alert ("Quiz over");
+
+let final = document.getElementById("final-score");
+final.textContent = time;
+let end = document.getElementById("end-screen");
+end.removeAttribute("class");
+
+questionsElement.setAttribute("class", "hidden")
+}
+
+startButton.onclick = start; 

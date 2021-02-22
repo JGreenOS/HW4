@@ -7,7 +7,7 @@
     font-size: 40px;
 }
 
-.question{
+.questions{
     font-size: 30px;
     font-family:'Courier New', Courier, monospace;
     color: black;
@@ -25,7 +25,7 @@
 
 .container {
     width: 800px;
-    max-width: 80%;
+    max-width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -40,6 +40,11 @@
 
 .hidden {
     display: none;
+}
+
+.start {
+    display: block;
+
 }
 
 .btn {
@@ -84,12 +89,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  .question{
-    font-weight: 600;
-  }
-  .answers {
-      margin-bottom: 20px;
+
   }
   #submit{
     font-family: sans-serif;
